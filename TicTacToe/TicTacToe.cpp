@@ -35,15 +35,15 @@ bool IsPlayerInputValid(int input,char *grid){
 
 //display function using temp array not grid array
 void display_grid(char *temp){
-    cout<<"     |     |     "<<endl;
-    cout<<"  "<<temp[0]<<"  |  "<<temp[1]<<"  |  "<<temp[2]<<"  "<<endl;
-    cout<<"_____|_____|_____"<<endl;
-    cout<<"     |     |     "<<endl;
-    cout<<"  "<<temp[3]<<"  |  "<<temp[4]<<"  |  "<<temp[5]<<"  "<<endl;
-    cout<<"_____|_____|_____"<<endl;
-    cout<<"     |     |     "<<endl;
-    cout<<"  "<<temp[6]<<"  |  "<<temp[7]<<"  |  "<<temp[8]<<"  "<<endl;
-    cout<<"     |     |     "<<endl;
+    cout<<"\t\t\t     |     |     "<<endl;
+    cout<<"\t\t\t  "<<temp[0]<<"  |  "<<temp[1]<<"  |  "<<temp[2]<<"  "<<endl;
+    cout<<"\t\t\t_____|_____|_____"<<endl;
+    cout<<"\t\t\t     |     |     "<<endl;
+    cout<<"\t\t\t  "<<temp[3]<<"  |  "<<temp[4]<<"  |  "<<temp[5]<<"  "<<endl;
+    cout<<"\t\t\t_____|_____|_____"<<endl;
+    cout<<"\t\t\t     |     |     "<<endl;
+    cout<<"\t\t\t  "<<temp[6]<<"  |  "<<temp[7]<<"  |  "<<temp[8]<<"  "<<endl;
+    cout<<"\t\t\t     |     |     "<<endl;
 }
 
 int main(){
@@ -71,15 +71,15 @@ int main(){
 	}
 
 	cout<<"\n Awesome ! \n\n P1 : "<<p1_choosed<<"\n P2 : "<<p2_choosed<<"\n\n Lets Start ! "<<endl;
-	cout<<"     |     |     "<<endl;
-    cout<<"  1  |  2  |  3  "<<endl;
-    cout<<"_____|_____|_____"<<endl;
-    cout<<"     |     |     "<<endl;
-    cout<<"  4  |  5  |  6  "<<endl;
-    cout<<"_____|_____|_____"<<endl;
-    cout<<"     |     |     "<<endl;
-    cout<<"  7  |  8  |  9  "<<endl;
-    cout<<"     |     |     "<<endl;
+	cout<<"\t\t\t     |     |     "<<endl;
+    cout<<"\t\t\t  1  |  2  |  3  "<<endl;
+    cout<<"\t\t\t_____|_____|_____"<<endl;
+    cout<<"\t\t\t     |     |     "<<endl;
+    cout<<"\t\t\t  4  |  5  |  6  "<<endl;
+    cout<<"\t\t\t_____|_____|_____"<<endl;
+    cout<<"\t\t\t     |     |     "<<endl;
+    cout<<"\t\t\t  7  |  8  |  9  "<<endl;
+    cout<<"\t\t\t     |     |     "<<endl;
 
     //input is used to identify which box is chosen
 	int input;
