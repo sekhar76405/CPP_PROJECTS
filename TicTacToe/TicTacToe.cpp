@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-// checking when the game is over
+// checking when the game is over with grid array not temp array
 bool IsGameOver(char *grid){
 	if(grid[0] == grid[1] && grid[1] == grid[2])
 		return true;
@@ -33,24 +33,29 @@ bool IsPlayerInputValid(int input,char *grid){
 		return true;
 }
 
-//display function
-void display_grid(char *grid){
-	cout<<"     |     |     "<<endl;
-    cout<<"  "<<grid[0]<<"  |  "<<grid[1]<<"  |  "<<grid[2]<<"  "<<endl;
+//display function using temp array not grid array
+void display_grid(char *temp){
+    cout<<"     |     |     "<<endl;
+    cout<<"  "<<temp[0]<<"  |  "<<temp[1]<<"  |  "<<temp[2]<<"  "<<endl;
     cout<<"_____|_____|_____"<<endl;
     cout<<"     |     |     "<<endl;
-    cout<<"  "<<grid[3]<<"  |  "<<grid[4]<<"  |  "<<grid[5]<<"  "<<endl;
+    cout<<"  "<<temp[3]<<"  |  "<<temp[4]<<"  |  "<<temp[5]<<"  "<<endl;
     cout<<"_____|_____|_____"<<endl;
     cout<<"     |     |     "<<endl;
-    cout<<"  "<<grid[6]<<"  |  "<<grid[7]<<"  |  "<<grid[8]<<"  "<<endl;
+    cout<<"  "<<temp[6]<<"  |  "<<temp[7]<<"  |  "<<temp[8]<<"  "<<endl;
     cout<<"     |     |     "<<endl;
 }
 
 int main(){
 
+	//grid array is used to store the grid with actual values that player inputs
 	char grid[9] = {'~','!','@','#','$','%','^','&','*'};
-	
-	char p1_choosed, p2_choosed;
+
+	//temp is used to diplay the grid with blanks to appear as its changing as the player inputs
+	char temp[9] = {' ',' ',' ',' ',' ',' ',' ',' ',' '}; 
+
+	char p1_choosed, p2_choosed; 		// X or O 
+
 	cout<<"Hello player 1 choose between 'X' and 'O' : ";
 	cin>>p1_choosed;
 	
@@ -89,10 +94,12 @@ int main(){
     		goto PLAYER_1_INPUTS;
     	}
     	else{
+    		//updating both arrays, one to store actual value and one for display purpose
     		grid[input] = p1_choosed;
+    		temp[input] = p1_choosed;
     	}
 
-    	display_grid(grid);
+    	display_grid(temp);
 
     	if(IsGameOver(grid)){
     		cout<<"Congratulations Player 1.\n You WON the Game !\n";
