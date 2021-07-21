@@ -70,7 +70,7 @@ int main(){
 	    p2_choosed = 'X';
 	}
 
-	cout<<"Awesome ! \n P1 : "<<p1_choosed<<"\n P2 : "<<p2_choosed<<"\n Lets Start ! "<<endl;
+	cout<<"\n Awesome ! \n\n P1 : "<<p1_choosed<<"\n P2 : "<<p2_choosed<<"\n\n Lets Start ! "<<endl;
 	cout<<"     |     |     "<<endl;
     cout<<"  1  |  2  |  3  "<<endl;
     cout<<"_____|_____|_____"<<endl;
@@ -81,36 +81,78 @@ int main(){
     cout<<"  7  |  8  |  9  "<<endl;
     cout<<"     |     |     "<<endl;
 
-    while(true){
+    //input is used to identify which box is chosen
+	int input;
 
-    PLAYER_1_INPUTS:
-    	int input;
-    	cout<<"Its P1's turn. Input the Box Number: ";
-    	cin>>input;
-    	input--;
+	//flag is used to keep track of how many time the players got chances and to decide if its a tir or not. 
+	//And also its a termination conditon for the while(true) as we break the loop after flag becomes 9, becasue by then all the boxes would be filled.
+	int flag =0;
 
-    	if(!IsPlayerInputValid(input,grid)){
-    		cout<<"Invalid Input. That box is filled.\n";
-    		goto PLAYER_1_INPUTS;
-    	}
-    	else{
-    		//updating both arrays, one to store actual value and one for display purpose
-    		grid[input] = p1_choosed;
-    		temp[input] = p1_choosed;
-    	}
+	//the actual game loop 	
+    while(true)
+    {
 
-    	display_grid(temp);
+	    PLAYER_1_INPUTS:
+	    	
+	    	cout<<"\n Its P1's turn. Input the Box Number: ";
+	    	cin>>input;
+	    	input--;
 
-    	if(IsGameOver(grid)){
-    		cout<<"Congratulations Player 1.\n You WON the Game !\n";
-    		break;
-    	}
-    	
+	    	if(!IsPlayerInputValid(input,grid)){
+	    		cout<<" Invalid Input. That box is filled.\n";
+	    		goto PLAYER_1_INPUTS;
+	    	}
+	    	else{
+	    		//updating both arrays, one to store actual value and one for display purpose
+	    		grid[input] = p1_choosed;
+	    		temp[input] = p1_choosed;
+	    	}
+
+	    	display_grid(temp);
+            flag++; 		//increasing flag to mark that one box is filled
+            
+	    	if(IsGameOver(grid)){
+	    		cout<<"\n CONGRATULATIONS Player 1.\n You WON the Game !\n";
+	    		break;
+	    	}
+	        
+            if(flag == 9){
+                flag++;     // again incresing the flag to know if P1 won or not
+                break;		//because if p1 won then the loop breaks at flag = 9
+            }
+
+	    PLAYER_2_INPUTS:
+	   
+	    	cout<<"\n Its P2's turn. Input the Box Number: ";
+	    	cin>>input;
+	    	input--;
+
+	    	if(!IsPlayerInputValid(input,grid)){
+	    		cout<<" Invalid Input. That box is filled.\n";
+	    		goto PLAYER_2_INPUTS;
+	    	}
+	    	else{
+	    		//updating both arrays, one to store actual value and one for display purpose
+	    		grid[input] = p2_choosed;
+	    		temp[input] = p2_choosed;
+	    	}
+
+	    	display_grid(temp);
+            flag++;			//increasing flag to mark that one box is filled
+            
+	    	if(IsGameOver(grid)){
+	    		cout<<"\n CONGRATULATIONS Player 2.\n You WON the Game !\n";
+	    		break;
+	    	}
+            
+            
+    }
+    if(flag == 10){
+    	cout<<" Oops ! It's a TIE."<<endl;
+    }
+    else{
+    	cout<<" GAME OVER :)"<<endl;
     }
 
 	return 0;
 }
-
-
-
-	
