@@ -23,7 +23,28 @@ bool IsGameOver(char *arr){
 		return false;
 }
 
+// To check if the Players have picked the right box to input or not.
+//(if it is filed already or not)
 
+bool IsPlayerInputValid(int input,char *arr){
+	if(arr[input] == 'X' || arr[input] == 'O')
+		return false;
+	else
+		return true;
+}
+
+//display function
+void display_grid(char *arr){
+	cout<<"     |     |     "<<endl;
+    cout<<"  "<<arr[0]<<"  |  "<<arr[1]<<"  |  "<<arr[2]<<"  "<<endl;
+    cout<<"_____|_____|_____"<<endl;
+    cout<<"     |     |     "<<endl;
+    cout<<"  "<<arr[3]<<"  |  "<<arr[4]<<"  |  "<<arr[5]<<"  "<<endl;
+    cout<<"_____|_____|_____"<<endl;
+    cout<<"     |     |     "<<endl;
+    cout<<"  "<<arr[6]<<"  |  "<<arr[7]<<"  |  "<<arr[8]<<"  "<<endl;
+    cout<<"     |     |     "<<endl;
+}
 
 int main(){
 
@@ -45,28 +66,43 @@ int main(){
 
 	cout<<"Awesome ! \n P1 : "<<p1_choosed<<"\n P2 : "<<p2_choosed<<"\n Lets Start ! "<<endl;
 	cout<<"     |     |     "<<endl;
-    cout<<"     |     |     "<<endl;
+    cout<<"  1  |  2  |  3  "<<endl;
     cout<<"_____|_____|_____"<<endl;
     cout<<"     |     |     "<<endl;
-    cout<<"     |     |     "<<endl;
+    cout<<"  4  |  5  |  6  "<<endl;
     cout<<"_____|_____|_____"<<endl;
     cout<<"     |     |     "<<endl;
-    cout<<"     |     |     "<<endl;
+    cout<<"  7  |  8  |  9  "<<endl;
     cout<<"     |     |     "<<endl;
 
+    while(true){
 
+    PLAYER_1_INPUTS:
+    	int input;
+    	cout<<"Its P1's turn. Input the Box Number: ";
+    	cin>>input;
+    	input--;
+
+    	if(!IsPlayerInputValid(input,arr)){
+    		cout<<"Invalid Input. That box is filled.\n";
+    		goto PLAYER_1_INPUTS;
+    	}
+    	else{
+    		arr[input] = p1_choosed;
+    	}
+
+    	display_grid(arr);
+
+    	if(IsGameOver(arr)){
+    		cout<<"Congratulations Player 1.\n You WON the Game !\n";
+    		break;
+    	}
+    	
+    }
 
 	return 0;
 }
 
 
 
-	cout<<"     |     |     "<<endl;
-    cout<<"  "<<arr[0]<<"  |  "<<arr[1]<<"  |  "<<arr[2]<<"  "<<endl;
-    cout<<"_____|_____|_____"<<endl;
-    cout<<"     |     |     "<<endl;
-    cout<<"  "<<arr[3]<<"  |  "<<arr[4]<<"  |  "<<arr[5]<<"  "<<endl;
-    cout<<"_____|_____|_____"<<endl;
-    cout<<"     |     |     "<<endl;
-    cout<<"  "<<arr[6]<<"  |  "<<arr[7]<<"  |  "<<arr[8]<<"  "<<endl;
-    cout<<"     |     |     "<<endl;
+	
