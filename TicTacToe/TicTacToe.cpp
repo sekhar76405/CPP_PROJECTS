@@ -1,4 +1,6 @@
 #include<iostream>
+#include<unistd.h>
+#include<cstdlib>
 using namespace std;
 
 // checking when the game is over with grid array not temp array
@@ -56,6 +58,7 @@ int main(){
 
 	char p1_choosed, p2_choosed; 		// X or O 
 
+	cout<<"\n\n";
 	cout<<"Hello player 1 choose between 'X' and 'O' : ";
 	cin>>p1_choosed;
 	
@@ -71,6 +74,9 @@ int main(){
 	}
 
 	cout<<"\n Awesome ! \n\n P1 : "<<p1_choosed<<"\n P2 : "<<p2_choosed<<"\n\n Lets Start ! "<<endl;
+	sleep(2);
+    system("clear");
+    
 	cout<<"\t\t\t     |     |     "<<endl;
     cout<<"\t\t\t  1  |  2  |  3  "<<endl;
     cout<<"\t\t\t_____|_____|_____"<<endl;
@@ -81,6 +87,18 @@ int main(){
     cout<<"\t\t\t  7  |  8  |  9  "<<endl;
     cout<<"\t\t\t     |     |     "<<endl;
 
+    cout<<"\n\n !! This is the numbering of the Boxes. !! \n";
+    sleep(5);
+    // cout<<"Game Starting in ..";
+    // for(int j =10;j>=0;j--){
+    //     cout<<j<<"..";
+    //     sleep(1);
+    // }
+    system("clear");
+    
+    cout<<"\n\n";
+    display_grid(temp);
+    
     //input is used to identify which box is chosen
 	int input;
 
@@ -107,6 +125,8 @@ int main(){
 	    		grid[input] = p1_choosed;
 	    		temp[input] = p1_choosed;
 	    	}
+
+	    	system("clear");
 
 	    	display_grid(temp);
             flag++; 		//increasing flag to mark that one box is filled
@@ -136,6 +156,8 @@ int main(){
 	    		grid[input] = p2_choosed;
 	    		temp[input] = p2_choosed;
 	    	}
+
+	    	system("clear");
 
 	    	display_grid(temp);
             flag++;			//increasing flag to mark that one box is filled
