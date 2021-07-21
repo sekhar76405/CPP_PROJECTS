@@ -2,22 +2,22 @@
 using namespace std;
 
 // checking when the game is over
-bool IsGameOver(char *arr){
-	if(arr[0] == arr[1] && arr[1] == arr[2])
+bool IsGameOver(char *grid){
+	if(grid[0] == grid[1] && grid[1] == grid[2])
 		return true;
-	else if(arr[3] == arr[4] && arr[4]  == arr[5])
+	else if(grid[3] == grid[4] && grid[4]  == grid[5])
 		return true;
-	else if(arr[6] == arr[7] && arr[7] == arr[8])
+	else if(grid[6] == grid[7] && grid[7] == grid[8])
 		return true;
-	else if(arr[0] == arr[3] && arr[3] == arr[6])
+	else if(grid[0] == grid[3] && grid[3] == grid[6])
 		return true;
-	else if(arr[1] == arr[4] && arr[4] == arr[7])
+	else if(grid[1] == grid[4] && grid[4] == grid[7])
 		return true;
-	else if(arr[2] == arr[5] && arr[5] == arr[8])
+	else if(grid[2] == grid[5] && grid[5] == grid[8])
 		return true;
-	else if(arr[6] == arr[4] && arr[4] == arr[2])
+	else if(grid[6] == grid[4] && grid[4] == grid[2])
 		return true;
-	else if(arr[0] == arr[4] && arr[4] == arr[8])
+	else if(grid[0] == grid[4] && grid[4] == grid[8])
 		return true;
 	else
 		return false;
@@ -26,29 +26,30 @@ bool IsGameOver(char *arr){
 // To check if the Players have picked the right box to input or not.
 //(if it is filed already or not)
 
-bool IsPlayerInputValid(int input,char *arr){
-	if(arr[input] == 'X' || arr[input] == 'O')
+bool IsPlayerInputValid(int input,char *grid){
+	if(grid[input] == 'X' || grid[input] == 'O')
 		return false;
 	else
 		return true;
 }
 
 //display function
-void display_grid(char *arr){
+void display_grid(char *grid){
 	cout<<"     |     |     "<<endl;
-    cout<<"  "<<arr[0]<<"  |  "<<arr[1]<<"  |  "<<arr[2]<<"  "<<endl;
+    cout<<"  "<<grid[0]<<"  |  "<<grid[1]<<"  |  "<<grid[2]<<"  "<<endl;
     cout<<"_____|_____|_____"<<endl;
     cout<<"     |     |     "<<endl;
-    cout<<"  "<<arr[3]<<"  |  "<<arr[4]<<"  |  "<<arr[5]<<"  "<<endl;
+    cout<<"  "<<grid[3]<<"  |  "<<grid[4]<<"  |  "<<grid[5]<<"  "<<endl;
     cout<<"_____|_____|_____"<<endl;
     cout<<"     |     |     "<<endl;
-    cout<<"  "<<arr[6]<<"  |  "<<arr[7]<<"  |  "<<arr[8]<<"  "<<endl;
+    cout<<"  "<<grid[6]<<"  |  "<<grid[7]<<"  |  "<<grid[8]<<"  "<<endl;
     cout<<"     |     |     "<<endl;
 }
 
 int main(){
 
-	char arr[9] = {'~','!','@','#','$','%','^','&','*'};
+	char grid[9] = {'~','!','@','#','$','%','^','&','*'};
+	
 	char p1_choosed, p2_choosed;
 	cout<<"Hello player 1 choose between 'X' and 'O' : ";
 	cin>>p1_choosed;
@@ -83,17 +84,17 @@ int main(){
     	cin>>input;
     	input--;
 
-    	if(!IsPlayerInputValid(input,arr)){
+    	if(!IsPlayerInputValid(input,grid)){
     		cout<<"Invalid Input. That box is filled.\n";
     		goto PLAYER_1_INPUTS;
     	}
     	else{
-    		arr[input] = p1_choosed;
+    		grid[input] = p1_choosed;
     	}
 
-    	display_grid(arr);
+    	display_grid(grid);
 
-    	if(IsGameOver(arr)){
+    	if(IsGameOver(grid)){
     		cout<<"Congratulations Player 1.\n You WON the Game !\n";
     		break;
     	}
